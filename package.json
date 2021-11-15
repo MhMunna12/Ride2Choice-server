@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "Monwar": "nodemon index.js",
-    "Monwar:dev":"nodemon index.js",
+    "npm": "nodemon index.js",
+    "npm:dev":"nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
