@@ -74,6 +74,18 @@ client.connect((err) => {
     }
   });
 
+  //update
+  app.patch("/update/:id", (req, res) => {});
+
+  //delete
+  app.delete("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    collection.deleteOne({ id: _id }).then((result) => {
+      res.send(result.deletedCount > 0);
+    });
+  });
+
   console.log("database connection");
 });
 
