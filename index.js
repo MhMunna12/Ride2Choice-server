@@ -75,14 +75,26 @@ client.connect((err) => {
   });
 
   //update
-  app.patch("/update/:id", (req, res) => {});
+  app.patch("/update/:itemId", (req, res) => {
+    const id = req.params.itemId;
+    collection
+      .updateOne(
+        { _id: id },
+        {
+          $set: { cost: req.body.cost, route: req.query.route },
+        }
+      )
+      .then((result) => {
+        res.send(result.modifiedCount > 0);
+      });
+  });
 
-  //delete
   app.delete("/delete/:id", (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    collection.deleteOne({ id: _id }).then((result) => {
+    const id = ObjectID(req.params.id);
+    console.log("deleted id", id);
+    collection.findOneAndDelete({ _id: id }).then((result) => {
       res.send(result.deletedCount > 0);
+      console.log("de", result);
     });
   });
 
